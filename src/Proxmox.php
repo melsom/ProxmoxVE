@@ -116,7 +116,7 @@ class Proxmox
             case 'GET':
                 return $this->httpClient->get($url, [
                     'verify' => false,
-                    'exceptions' => false,
+                    'http_errors' => false,
                     'cookies' => $cookies,
                     'query' => $params,
                 ]);
@@ -128,7 +128,7 @@ class Proxmox
                 ];
                 return $this->httpClient->request($method, $url, [
                     'verify' => false,
-                    'exceptions' => false,
+                    'http_errors' => false,
                     'cookies' => $cookies,
                     'headers' => $headers,
                     'form_params' => $params,
