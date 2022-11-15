@@ -119,7 +119,9 @@ class Proxmox
                     'http_errors' => false,
                     'cookies' => $cookies,
                     'query' => $params,
-                ]);
+                    'timeout' => 5,
+                    'connect_timeout' => 5,
+                ]); 
             case 'POST':
             case 'PUT':
             case 'DELETE':
@@ -132,6 +134,8 @@ class Proxmox
                     'cookies' => $cookies,
                     'headers' => $headers,
                     'form_params' => $params,
+                    'timeout' => 5,
+                    'connect_timeout' => 5,
                 ]);
             default:
                 $errorMessage = "HTTP Request method {$method} not allowed.";
@@ -211,6 +215,8 @@ class Proxmox
         $response = $this->httpClient->post($loginUrl, [
             'verify' => false,
             'exceptions' => false,
+            'timeout' => 5,
+            'connect_timeout' => 5,
             'form_params' => [
                 'username' => $this->credentials->getUsername(),
                 'password' => $this->credentials->getPassword(),
